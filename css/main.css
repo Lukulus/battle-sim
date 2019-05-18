@@ -3,7 +3,7 @@
                 CSS Datei des ballte-sim
     
     Author und Rechte: Lukas "Lukulus" Heyen
-    Stand: 04. Mai 2019
+    Stand: 18. Mai 2019
 */
 
 
@@ -18,7 +18,7 @@
 	}
 	@font-face {
 		font-family: Standard;
-		src: url(../fonts/Imperator.ttf);
+		src: url(../fonts/ruluko.ttf);
 	}
 
 	/* Allgemeine Formatierung des battle-sim */

@@ -4,7 +4,7 @@
                 Berechnungs und Ausgabefunktionen (V 3.0)
     
     Author und Rechte: Lukas "Lukulus" Heyen
-    Stand: 14. Mai 2019
+    Stand: 18. Mai 2019
 */
 
 // ----------------------------------------------------------------------------------------------------
@@ -282,7 +282,8 @@ function parseTextArea(id, div) {
         getText = {
                     objekt : [], 
                     menge : []
-                  }
+                  },
+        getDiv = document.getElementById(div);          
         
     zeilen = newText.value.split('\n');
     
@@ -297,6 +298,9 @@ function parseTextArea(id, div) {
         }
     }
     document.getElementById(div + '-Import').innerHTML = '';
+    while (getDiv.firstChild){
+        getDiv.removeChild(getDiv.firstChild);
+    }
     createFelder(div, (getText.menge.length + 1));
     setScan(div, getText);
 }
@@ -370,17 +374,17 @@ function tfAusgabe() {
 
     // Ausgabe des errechneten TF's    
     newBlock += '<table>';
-    newBlock += '<tr><td>Titan:</td><td>' + tf_titan.toLocaleString() + '</td></tr>';
-    newBlock += '<tr><td>Silizium:</td><td>' + tf_silizium.toLocaleString() + '</td></tr>';
-    newBlock += '<tr><td>PVC:</td><td>' + tf_pvc.toLocaleString() + '</td></tr>';
+    newBlock += '<tr><td>Titan:</td><td align="right">' + tf_titan.toLocaleString() + '</td></tr>';
+    newBlock += '<tr><td>Silizium:</td><td align="right">' + tf_silizium.toLocaleString() + '</td></tr>';
+    newBlock += '<tr><td>PVC:</td><td align="right">' + tf_pvc.toLocaleString() + '</td></tr>';
     newBlock += '</table><br />';
     newBlock += '<p>Für das Sammeln des TF\'s werden benötigt: </p>';
     newBlock += '<br /><table>';
-    newBlock += '<tr><td>LORIAL Transporter:</td><td>' + Math.ceil((tf_pvc + tf_silizium + tf_titan) / 600000).toLocaleString()  + '</td></tr>';
-    newBlock += '<tr><td>DEMETER Transporter:</td><td>' + Math.ceil((tf_pvc + tf_silizium + tf_titan) / 375000).toLocaleString()  + '</td></tr>';
-    newBlock += '<tr><td>EOS, ATLAS oder SAIPH Transporter:</td><td>' + Math.ceil((tf_pvc + tf_silizium + tf_titan) / 325000).toLocaleString()  + '</td></tr>';
-    newBlock += '<tr><td>AURORA Sonden:</td><td>' + Math.ceil((tf_pvc + tf_silizium + tf_titan) / 30000).toLocaleString()  + '</td></tr>';
-    newBlock += '<tr><td>AIN Sonden:</td><td>' + Math.ceil((tf_pvc + tf_silizium + tf_titan) / 15000).toLocaleString()  + '</td></tr>';
+    newBlock += '<tr><td>LORIAL Transporter:</td><td align="right">' + Math.ceil((tf_pvc + tf_silizium + tf_titan) / 600000).toLocaleString()  + '</td></tr>';
+    newBlock += '<tr><td>DEMETER Transporter:</td><td align="right">' + Math.ceil((tf_pvc + tf_silizium + tf_titan) / 375000).toLocaleString()  + '</td></tr>';
+    newBlock += '<tr><td>EOS, ATLAS oder SAIPH Transporter:</td><td align="right">' + Math.ceil((tf_pvc + tf_silizium + tf_titan) / 325000).toLocaleString()  + '</td></tr>';
+    newBlock += '<tr><td>AURORA Sonden:</td><td align="right">' + Math.ceil((tf_pvc + tf_silizium + tf_titan) / 30000).toLocaleString()  + '</td></tr>';
+    newBlock += '<tr><td>AIN Sonden:</td><td align="right">' + Math.ceil((tf_pvc + tf_silizium + tf_titan) / 15000).toLocaleString()  + '</td></tr>';
     newBlock += '</table><br />';
     
     return newBlock;
@@ -404,14 +408,14 @@ function vnkAusgabe() {
     for (let c = 0; c < output.v.init.s_menge.length; c++){
         if(input.v.s_typ[c] != 0) {
             newBlock += '<tr><td>' + sListe[(input.v.s_typ[c])].getName();
-            newBlock += ' : </td><td>' + output.v.aktuell.s_menge[c].toLocaleString() + '</td></tr>';
+            newBlock += ' : </td><td align="right">' + output.v.aktuell.s_menge[c].toLocaleString() + '</td></tr>';
         }
     }
     newBlock += '<tr><td><p></p></td></tr>';
     for (let c = 0; c < output.v.init.d_menge.length; c++){
         if(input.v.d_typ[c] != 0) {
             newBlock += '<tr><td>' + dListe[(input.v.d_typ[c])].getName();
-            newBlock += ' : </td><td>' + output.v.aktuell.d_menge[c].toLocaleString() + ' (+';
+            newBlock += ' : </td><td align="right">' + output.v.aktuell.d_menge[c].toLocaleString() + ' (+';
             newBlock += wh[c] + ' =' + (ing *100) + '% Wiederherstellung)</td></tr>';
         }
     }
@@ -445,7 +449,7 @@ function ankAusgabe() {
     for (let c = 0; c < output.a.init.s_menge.length; c++){
         if(input.a.s_typ[c] != 0) {
             newBlock += '<tr><td>' + sListe[(input.a.s_typ[c])].getName();
-            newBlock += ": </td><td>" + output.a.aktuell.s_menge[c].toLocaleString() + "</td><tr>";
+            newBlock += ':</td><td align="right">' + output.a.aktuell.s_menge[c].toLocaleString() + '</td><tr>';
         }
     }
     newBlock += '</table>';
@@ -506,6 +510,7 @@ function kbAusgabe(Kampf) {
 //
 // Funktion zum Berechnung und Ausgabe des Grundwerte vor dem Kampf  
 // Aufruf erfolgt durch die Funktion 'aktualisieren'
+// aktualisiert: 18.05.2019
 //
 function simAusgabe(wer) {
 
@@ -528,17 +533,15 @@ function simAusgabe(wer) {
     }  
     //Ausgabe der Werte
     newBlock += '<table>';
-    newBlock += '<tr><td>Schilde:</td><td>' + werte.ges_schilde.toLocaleString();
-    newBlock += '</td><td> inkl. Forschung und Mystikum: ' + forschungSchilde + ' %</td></tr>';
-    newBlock += '<tr><td>Struktur:</td><td>' + werte.ges_panzerung.toLocaleString();
-    newBlock += '</td><td> inkl. Forschung und Mystikum: ' + forschungStruktur + ' %</td></tr>';
-    newBlock += '<tr><td>Waffe:</td><td>' + werte.ges_waffe.toLocaleString();
-    newBlock += '</td><td> inkl. Forschung und Mystikum: ' + forschungWaffe + ' %</td></tr>';
-    newBlock += '<tr><td>Heilung:</td><td>' + werte.ges_heilung.toLocaleString();
-    newBlock += '</td><td> inkl. Forschung und Mystikum: ' + forschungHeilung + ' %</td></tr>';
-    newBlock += '<tr><td>Anzahl Schiffe:</td><td>' + werte.sum_schiffe.toLocaleString() + '</td><td>Flottenpunkte: ' + werte.sum_punkte_schiffe.toLocaleString() + '</td></tr>'; 
+    newBlock += '<tr><td>Schilde (' + forschungSchilde + ' %):</td><td align="right">' + werte.ges_schilde.toLocaleString() + '</td></tr>';
+    newBlock += '<tr><td>Struktur (' + forschungStruktur + ' %):</td><td align="right">' + werte.ges_panzerung.toLocaleString() + '</td></tr>';
+    newBlock += '<tr><td>Waffe (' + forschungWaffe + ' %):</td><td align="right">' + werte.ges_waffe.toLocaleString() + '</td></tr>';
+    newBlock += '<tr><td>Heilung (' + forschungHeilung + ' %):</td><td align="right">' + werte.ges_heilung.toLocaleString() + '</td></tr>';
+    newBlock += '<tr><td>&Sigma; Schiffe:</td><td align="right">' + werte.sum_schiffe.toLocaleString() + '</td></tr>';
+    newBlock += '<tr><td>&Sigma; Punkte:</td><td align="right">' + werte.sum_punkte_schiffe.toLocaleString() + '</td></tr>'; 
     if (wer === 'v') {
-        newBlock += '<tr><td>Verteidigungsanlagen:</td><td>' + werte.sum_defence.toLocaleString() + '</td><td>Gebäudepunkte: ' + werte.sum_punkte_defence.toLocaleString() + '</td></tr>'; 
+        newBlock += '<tr><td>&Sigma; VtdgA:</td><td align="right">' + werte.sum_defence.toLocaleString() + '</td></tr>';
+        newBlock += '<tr><td>&Sigma; Punkte:</td><td align="right">' + werte.sum_punkte_defence.toLocaleString() + '</td></tr>'; 
     }
     newBlock += '</table>';
 

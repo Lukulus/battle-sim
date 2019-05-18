@@ -113,7 +113,7 @@ function createFelder(div, anzahl){
     
         x = document.getElementById(div).getElementsByClassName('Eingabe');
         c = x.length;
-        //anzahl += x.length; 
+        anzahl += x.length; 
 
         while (c < anzahl) {
             newDiv = createEingabeDiv();
@@ -134,7 +134,7 @@ function createButton(div, ziel) {
 
     newElement = document.createElement('button'); 
     newElement.innerHTML = '+';
-    newElement.setAttribute('onClick', 'createFelder("' + ziel +'" ,1)');
+    newElement.setAttribute('onClick', 'createFelder("' + ziel + '" ,1)');
     getDiv.appendChild(newElement);
 
     newElement = document.createElement('button'); 
@@ -173,10 +173,15 @@ function clearFelder(div) {
     let getDiv = document.getElementById(div);
     let x = getDiv.getElementsByClassName('Eingabe');
 
-    for (let c = 0; c < x.length; c++){
-        document.getElementById('select_' + div + '_' + c).selectedIndex = 0;  
-        document.getElementById(div + '_' + c).value = 0;
-    }  
+    while (getDiv.firstChild){
+        getDiv.removeChild(getDiv.firstChild);
+    }
+
+    createFelder(div, 7);
+    // for (let c = 0; c < x.length; c++){
+    //     document.getElementById('select_' + div + '_' + c).selectedIndex = 0;  
+    //     document.getElementById(div + '_' + c).value = 0;
+    // }  
     aktualsieren();      
 }
 
