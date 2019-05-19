@@ -26,6 +26,26 @@
 		margin: 0px;
 		padding: 0px;
 	}
+
+	html {
+		font-size: 16px;
+	}
+	@media only screen and (max-width: 1199px) { 
+		html { font-size: 14px;	}
+	}
+	@media only screen and (max-width: 991px) { 
+		html { font-size: 12x;	}
+	}
+	@media only screen and (max-width: 767px) { 
+		html { font-size: 10px;	}
+	}
+	@media only screen and (max-width: 479px) { 
+		html { font-size: 9px;	}
+	}
+	@media only screen and (max-width: 360px) { 
+		html { font-size: 8px;	}
+	}
+
 	body {
 		background-color: lightgray;
 		width: 100%;
@@ -36,7 +56,7 @@
 		}
 	h1 {
 		font-family: headline;
-		font-size: 2.1rem;
+		font-size: 2.0rem;
 		font-weight: 800;
 		color: #000;
 		letter-spacing: 0.2rem;
@@ -92,7 +112,7 @@
 		flex-direction: row; 
 		flex-wrap: wrap;
 		list-style: none;
-		width: 60%;
+		width: 80%;
       	margin: 0 auto;
 	}
 	#nav ul li a {
@@ -127,7 +147,7 @@
 		display: grid;
 		grid-template-columns: repeat(6, 1fr);
 		grid-gap: 5px;
-		grid-auto-rows: minmax(30px, auto);
+		grid-auto-rows: minmax(20px, auto);
 		background-color: #999;
     }
 		.header {
@@ -296,7 +316,8 @@
  /* Inputs and Labels*/
 	label {
 		display: inline-block;
-		width: 13.5rem;	
+		width: 10rem;	
+		font-family: Standard;
 		font-size: 0.8rem;
 		font-weight: 300;
 		letter-spacing: 0.1rem;
@@ -304,7 +325,8 @@
 		margin: 0 0 0.3rem 0;
 	}
  	input[type="number"] {
-		width: 6rem;
+		width: 3rem;
+		font-family: Standard;
 		font-size: 0.8rem;
 		font-weight: 300;
 	 	letter-spacing: 0.1rem;
@@ -318,10 +340,12 @@
 	 	padding: 0.05rem;
 	 	text-decoration: none;
  	}
- 	select {
+ 	select, option {
    	appearance: none;
-	 	border: none;display: inline-block;
-	 	width: 12rem;	
+		border: none;
+		display: inline-block;
+	 	width: 7rem;	
+    	font-family: Standard;
 	 	font-size: 0.8rem;
 	 	font-weight: 300;
  	 	border-radius: 4px;
@@ -333,9 +357,19 @@
 	 	text-decoration: none;
 	 	background-color: rgba(55, 0, 0, 0.2);
 	}
+	option {
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
 	textarea {
+		font-family: Standard;
 		width: 100%;
 		padding: 10px;
     	line-height: 1.5;
     	border-radius: 5px;
+	}
+	button {
+		font-size: 0.9rem;
+		font-family: Standard;
 	}

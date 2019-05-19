@@ -245,30 +245,30 @@ function createGridForschung() {
     newDiv.classList.add('forschung_links');
     newDiv.id = 'Forschung';
     newElement  = document.createElement('h3');
-    newElement.innerHTML = 'Forschung des Angreifers:';
+    newElement.innerHTML = 'Forschung Angreifer:';
     newDiv.appendChild(newElement);
     newElement = createEingabeDiv();
-    newElement.appendChild(createLabel('Waffentechnik:'))
+    newElement.appendChild(createLabel('Waffe:'))
     newDiv.appendChild(newElement);
     newElement.appendChild(createInputNumber('af','waffe'));
     newDiv.appendChild(newElement);
     newElement = createEingabeDiv();
-    newElement.appendChild(createLabel('Schildtechnik:'))
+    newElement.appendChild(createLabel('Schilde:'))
     newDiv.appendChild(newElement);
     newElement.appendChild(createInputNumber('af','schild'));
     newDiv.appendChild(newElement);
     newElement = createEingabeDiv();
-    newElement.appendChild(createLabel('Strukturtechnik:'))
+    newElement.appendChild(createLabel('Struktur:'))
     newDiv.appendChild(newElement);
     newElement.appendChild(createInputNumber('af','panzerung'));
     newDiv.appendChild(newElement);
     newElement = createEingabeDiv();
-    newElement.appendChild(createLabel('Regenerationstechnik:'))
+    newElement.appendChild(createLabel('Regeneration:'))
     newDiv.appendChild(newElement);
     newElement.appendChild(createInputNumber('af','heilung'));
     newDiv.appendChild(newElement);
     newElement  = document.createElement('h3');
-    newElement.innerHTML = 'Level des Angreifer-Mystikums:';
+    newElement.innerHTML = 'Angreifer-Mystikum:';
     newDiv.appendChild(newElement);
     newElement = createEingabeDiv();
     newElement.appendChild(createLabel('%-Waffe:'))
@@ -299,30 +299,30 @@ function createGridForschung() {
     newDiv.classList.add('forschung_rechts');
     newDiv.id = 'Forschung';
     newElement  = document.createElement('h3');
-    newElement.innerHTML = 'Forschung des Verteidigers:';
+    newElement.innerHTML = 'Forschung Verteidiger:';
     newDiv.appendChild(newElement);
     newElement = createEingabeDiv();
-    newElement.appendChild(createLabel('Waffentechnik:'))
+    newElement.appendChild(createLabel('Waffe:'))
     newDiv.appendChild(newElement);
     newElement.appendChild(createInputNumber('vf','waffe'));
     newDiv.appendChild(newElement);
     newElement = createEingabeDiv();
-    newElement.appendChild(createLabel('Schildtechnik:'))
+    newElement.appendChild(createLabel('Schilde:'))
     newDiv.appendChild(newElement);
     newElement.appendChild(createInputNumber('vf','schild'));
     newDiv.appendChild(newElement);
     newElement = createEingabeDiv();
-    newElement.appendChild(createLabel('Strukturtechnik:'))
+    newElement.appendChild(createLabel('Struktur:'))
     newDiv.appendChild(newElement);
     newElement.appendChild(createInputNumber('vf','panzerung'));
     newDiv.appendChild(newElement);
     newElement = createEingabeDiv();
-    newElement.appendChild(createLabel('Regenerationstechnik:'))
+    newElement.appendChild(createLabel('Regeneration:'))
     newDiv.appendChild(newElement);
     newElement.appendChild(createInputNumber('vf','heilung'));
     newDiv.appendChild(newElement);
     newElement  = document.createElement('h3');
-    newElement.innerHTML = 'Level des Verteidiger-Mystikums:';
+    newElement.innerHTML = 'Verteidiger-Mystikum:';
     newDiv.appendChild(newElement);
     newElement = createEingabeDiv();
     newElement.appendChild(createLabel('%-Waffe:'))

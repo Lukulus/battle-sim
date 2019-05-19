@@ -380,9 +380,9 @@ function tfAusgabe() {
     newBlock += '</table><br />';
     newBlock += '<p>Für das Sammeln des TF\'s werden benötigt: </p>';
     newBlock += '<br /><table>';
-    newBlock += '<tr><td>LORIAL Transporter:</td><td align="right">' + Math.ceil((tf_pvc + tf_silizium + tf_titan) / 600000).toLocaleString()  + '</td></tr>';
-    newBlock += '<tr><td>DEMETER Transporter:</td><td align="right">' + Math.ceil((tf_pvc + tf_silizium + tf_titan) / 375000).toLocaleString()  + '</td></tr>';
-    newBlock += '<tr><td>EOS, ATLAS oder SAIPH Transporter:</td><td align="right">' + Math.ceil((tf_pvc + tf_silizium + tf_titan) / 325000).toLocaleString()  + '</td></tr>';
+    newBlock += '<tr><td>LORIAL:</td><td align="right">' + Math.ceil((tf_pvc + tf_silizium + tf_titan) / 600000).toLocaleString()  + '</td></tr>';
+    newBlock += '<tr><td>DEMETER:</td><td align="right">' + Math.ceil((tf_pvc + tf_silizium + tf_titan) / 375000).toLocaleString()  + '</td></tr>';
+    newBlock += '<tr><td>EOS, ATLAS, SAIPH:</td><td align="right">' + Math.ceil((tf_pvc + tf_silizium + tf_titan) / 325000).toLocaleString()  + '</td></tr>';
     newBlock += '<tr><td>AURORA Sonden:</td><td align="right">' + Math.ceil((tf_pvc + tf_silizium + tf_titan) / 30000).toLocaleString()  + '</td></tr>';
     newBlock += '<tr><td>AIN Sonden:</td><td align="right">' + Math.ceil((tf_pvc + tf_silizium + tf_titan) / 15000).toLocaleString()  + '</td></tr>';
     newBlock += '</table><br />';
@@ -415,8 +415,7 @@ function vnkAusgabe() {
     for (let c = 0; c < output.v.init.d_menge.length; c++){
         if(input.v.d_typ[c] != 0) {
             newBlock += '<tr><td>' + dListe[(input.v.d_typ[c])].getName();
-            newBlock += ' : </td><td align="right">' + output.v.aktuell.d_menge[c].toLocaleString() + ' (+';
-            newBlock += wh[c] + ' =' + (ing *100) + '% Wiederherstellung)</td></tr>';
+            newBlock += ' : </td><td align="right">' + output.v.aktuell.d_menge[c].toLocaleString() + ' (+' + wh[c] + ')</td></tr>';
         }
     }
     newBlock += '</table>';
@@ -427,7 +426,7 @@ function vnkAusgabe() {
     newBlock += '<p>Du hast ' + (output.v.init.sum_punkte_defence - output.v.aktuell.sum_punkte_defence).toLocaleString();
     newBlock += ' Gebäudepunkte verloren. ';
     newBlock += (getPunkte(dListe, input.v.d_typ, wh)).toLocaleString();
-    newBlock += ' Gebäudepunkte wurden wieder hergestellt.</p>';
+    newBlock += ' Gebäudepunkte (' + (ing *100) +'% der Vtdg-Anlagen) wurden wieder hergestellt.</p>';
 
     newBlock += '<br />';
     // Ausgabe exp
